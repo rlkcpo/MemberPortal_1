@@ -1,0 +1,21 @@
+﻿extends layout
+
+block pageTitle
+    .jumbotron
+        h1 ABC Member Portal
+        
+
+block pageContent
+    .container-fluid
+        .wrapper
+            .form-signin
+                form#form1(name='form1', method='post', action='javascript:postHandler()')
+                p
+                label
+                h2 Member Sign-In
+                input#name(type='text', name='name', placeholder='Please Input Name')
+                br
+                input#password(type='text', name='password', placeholder='Password')
+                p
+                label
+                input#submit(type='submit', name='submit', value='Submit')
