@@ -36,7 +36,16 @@ app.use('/about', about);
 app.use('/contact', contact)
 app.use('/users', users);
 
-
+//post data to the REST API
+app.post('/login', function (req, res) {
+    var user_name = req.body.user;
+    var password = req.body.password;
+    console.log("User name and password entered");
+    res.end("yes");
+});
+app.listen(3000, function (){
+    console.log("Started on PORT 3000");
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -69,7 +78,7 @@ app.use(function (err, req, res, next) {
     });
 });
 //getting input from form and sending it JSON 
-function postHandler(request, response){
+/*function postHandler(request, response){
     if (req.method == 'POST') {
         var jsonString = '';
         req.on('data', function (data) {
@@ -79,5 +88,5 @@ function postHandler(request, response){
             console.log(JSON.parse(jsonString));
         });
     }
-}
+}*/
 module.exports = app;
