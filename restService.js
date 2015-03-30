@@ -22,6 +22,7 @@ performRequest = function performRequest(endpoint, method, data, success) {
     
     var options = {
         host: host,
+        port: 443,
         path: endpoint,
         method: method,
         headers: headers
