@@ -1,9 +1,11 @@
 ﻿var querystring = require('querystring');
 var https = require('https');
 
+
 var host = 'https://ec2-54-145-194-211.compute-1.amazonaws.com:80';
 
-function performRequest(endpoint, method, data, success) {
+
+performRequest = function performRequest(endpoint, method, data, success) {
     var dataString = JSON.stringify(data);
     var headers = {};
     
@@ -44,3 +46,4 @@ function performRequest(endpoint, method, data, success) {
     req.write(dataString);
     req.end();
 }
+

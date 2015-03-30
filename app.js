@@ -13,6 +13,8 @@ var home = require('./routes/home');
 var restService = require('./restService');
 
 
+
+
 //comment
 
 var app = express();
@@ -44,13 +46,15 @@ app.post('/login', function (req, res) {
     console.log("User name and password entered");
     res.end("yes");
 });
-app.listen(1337, '127.0.0.1', function (){
-    console.log("Started on PORT 1337");
-})
 
 performRequest('/mrxuser/email/rlkcpo@gmail.com', 'GET', {}, function (mrxUser) {
     console.log("THE MRX USER IS: " + mrxUser.email);
 });
+
+app.listen(1337, '127.0.0.1', function (){
+    console.log("Started on PORT 1337");
+})
+
 
 
 // catch 404 and forward to error handler
