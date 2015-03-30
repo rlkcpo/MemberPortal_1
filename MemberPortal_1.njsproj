@@ -32,6 +32,10 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="data\dbData.js" />
+    <Compile Include="restService.js">
+      <SubType>Code</SubType>
+      <TestFramework>ExportRunner</TestFramework>
+    </Compile>
     <Compile Include="routes\about.js" />
     <Compile Include="routes\contact.js" />
     <Compile Include="routes\home.js" />

@@ -10,10 +10,10 @@ var users = require('./routes/users');
 var about = require('./routes/about');
 var contact = require('./routes/contact');
 var home = require('./routes/home');
+var restService = require('./restService');
 
 
 //comment
-
 
 var app = express();
 
@@ -36,6 +36,7 @@ app.use('/about', about);
 app.use('/contact', contact)
 app.use('/users', users);
 
+
 //post data to the REST API
 app.post('/login', function (req, res) {
     var user_name = req.body.user;
@@ -43,9 +44,14 @@ app.post('/login', function (req, res) {
     console.log("User name and password entered");
     res.end("yes");
 });
-app.listen(3000, function (){
-    console.log("Started on PORT 3000");
+app.listen(1337, '127.0.0.1', function (){
+    console.log("Started on PORT 1337");
 })
+
+performRequest('/mrxuser/email/rlkcpo@gmail.com', 'GET', {}, function (mrxUser) {
+    console.log("THE MRX USER IS: " + mrxUser.email);
+});
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
