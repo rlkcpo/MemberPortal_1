@@ -43,13 +43,16 @@ app.use('/users', users);
 app.post('/login', function (req, res) {
     var user_name = req.body.user;
     var password = req.body.password;
+
+   restService.getMrxUser('rlkcpo@gmail.com', function(data, response) {
+   	    console.log(data.email)
+   	    console.log(data.encryptedPassword);
+   });
+
     console.log("User name and password entered");
     res.end("yes");
 });
 
-performRequest('/mrxuser/email/rlkcpo@gmail.com', 'GET', {}, function (mrxUser) {
-    console.log("THE MRX USER IS: " + mrxUser.email);
-});
 
 app.listen(1337, '127.0.0.1', function (){
     console.log("Started on PORT 1337");
