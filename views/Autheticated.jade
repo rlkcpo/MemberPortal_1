@@ -1,0 +1,45 @@
+﻿extends layout
+
+block pageTitle
+    .jumbotron
+        h1 MRX Member Portal
+        p
+        | Welcome ***whoever you are****
+        
+
+block pageContent
+    .container-fluid
+      // ----
+      #content
+        ul#tabs.nav.nav-tabs.nav-justified(data-tabs='tabs')
+          li.active
+            a(href='#Prescription', data-toggle='tab') Prescription Benefit Summary
+          li
+            a(href='#Claim', data-toggle='tab') Claim History
+          li
+            a(href='#Drug', data-toggle='tab') Drug Price Lookup
+          li
+            a(href='#Locate', data-toggle='tab') Locate a Pharmacy
+          li
+            a(href='#Health', data-toggle='tab') Health and Wellness
+        #my-tab-content.tab-content
+          #Prescription.tab-pane.active
+            h1 Prescription Benefit Summary
+            p add two panels here to display data from database (Member info annaual deductable/ Copayments)
+          #Claim.tab-pane
+            h1 Claim History
+            p 1 large panel to display claims (database pull)
+          #Drug.tab-pane
+            h1 Drug Price Lookup
+            p 1 panel with a form inside to lookup drugs. (form submit and database pull)
+          #Locate.tab-pane
+            h1 Locate a Pharmacy
+            p Google maps script here (database?)
+          #Health.tab-pane
+            h1 Health and Wellness
+            p crazy stuff goes here...
+      script(type='text/javascript').
+        jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+        });
+    // container
