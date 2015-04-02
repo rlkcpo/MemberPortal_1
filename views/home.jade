@@ -3,29 +3,29 @@
 block pageTitle
     .jumbotron
         h1 ABC Member Portal
-        
-script.
-      $(document).ready(function(){
-      var user,pass;
-      $("#submit").click(function(){
-      user=$("#user").val();
-      pass=$("#password").val();
-      $.post("http://localhost:1337/login",{user: user,password: pass}, function(data){
-      if(data==='done')
-      {
-      alert("login success");
-      }
-      });
-      });
-      });
+
 
 block pageContent
-    .container-fluid
+    .container-fluid   
+        script.
+              $(document).ready(function(){
+              var user,pass;
+              $("#submit").click(function(){
+              user=$("#user").val();
+              pass=$("#password").val();
+              $.post("http://localhost:1337/login",{user: user,password: pass}, function(data){
+              if(data==='done')
+              {
+              alert("login success");
+              }
+              });
+              });
+              });
         .wrapper
             .form-signin
                 label
                 h2 Member Sign-In
-                input#name(type='text', name='name', placeholder='Please Input Name')
+                input#name(type='text', name='user', placeholder='Please Input Name')
                 br
                 input#password(type='password', name='password', placeholder='Password')
                 p
