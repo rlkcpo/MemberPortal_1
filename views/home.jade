@@ -3,21 +3,8 @@
 block pageTitle
     .jumbotron
         h1 ABC Member Portal
-        
-script.
-      $(document).ready(function(){
-      var user,pass;
-      $("#submit").click(function(){
-      user=$("#user").val();
-      pass=$("#password").val();
-      $.post("http://localhost:1337/login",{user: user,password: pass}, function(data){
-      if(data==='done')
-      {
-      alert("login success");
-      }
-      });
-      });
-      });
+
+
 
 block pageContent
     .container-fluid
@@ -31,3 +18,19 @@ block pageContent
                 p
                 label
                 input#submit(type='submit', name='submit', value='Submit')
+
+    script(type='text/javascript').
+        $(function() {
+
+            $("#submit").click(function () {
+
+                var user = $("#name").val();
+                var pass = $("#password").val();
+
+                $.post("http://localhost:1337/login", {user: user, password: pass}, function (data) {
+                    if (data === 'done') {
+                        alert("login success");
+                    }
+                });
+            });
+        });

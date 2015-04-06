@@ -11,9 +11,8 @@ var about = require('./routes/about');
 var contact = require('./routes/contact');
 var home = require('./routes/home');
 
+
 var restService = require('./restService');
-
-
 
 
 //comment
@@ -28,7 +27,7 @@ app.set('view engine', 'jade');
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -42,23 +41,31 @@ app.use('/users', users);
 
 //post data to the REST API
 app.post('/login', function (req, res) {
-    var user_name = req.body.user;
+
+
+    var email = req.body.user;
     var password = req.body.password;
 
-   restService.getMrxUser('rlkcpo@gmail.com', function(data, response) {
-   	    console.log(data.email)
-   	    console.log(data.encryptedPassword);
-   });
+    console.log(email);
+    console.log(password);
 
-    console.log("User name and password entered");
+    res.cookie('hello', 'world');
+
+    restService.login(email, password, function(data, response) {
+        console.log(data.token);
+        console.log(response);
+
+        //res.cookie('hello', 'world');
+    });
+
+
     res.end("yes");
 });
 
 
-app.listen(1337, '127.0.0.1', function (){
-    console.log("Started on PORT 1337");
+app.listen(1337, '127.0.0.1', function () {
+    console.log("Started on PORT 1337..");
 })
-
 
 
 // catch 404 and forward to error handler
@@ -93,14 +100,14 @@ app.use(function (err, req, res, next) {
 });
 //getting input from form and sending it JSON 
 /*function postHandler(request, response){
-    if (req.method == 'POST') {
-        var jsonString = '';
-        req.on('data', function (data) {
-            jsonString += data;
-        });
-        req.on('end', function () {
-            console.log(JSON.parse(jsonString));
-        });
-    }
-}*/
+ if (req.method == 'POST') {
+ var jsonString = '';
+ req.on('data', function (data) {
+ jsonString += data;
+ });
+ req.on('end', function () {
+ console.log(JSON.parse(jsonString));
+ });
+ }
+ }*/
 module.exports = app;
